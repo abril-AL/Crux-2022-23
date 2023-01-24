@@ -1,5 +1,5 @@
  # Team 12 - Abril , Lit Review
- - The first two sources look at yes/no situations related to Signal processing/EEG signals
+ - The first two sources look at <kbd>yes</kbd>/<kbd>no</kbd> situations related to Signal processing/EEG signals
  - They are similar to the idea we have to "swiping left or right"
  
  
@@ -22,7 +22,7 @@
     - Support Vector Machine (SVM) 
  - Methods
     - Experiment Procedures  
-        - The subjects were shown one of the words “yes” or “no” on a computer screen
+        - The subjects were shown one of the words <kbd>yes</kbd> or <kbd>no</kbd> on a computer screen
         - Participants were told to hold the image of what they chose in their heads
         - The yes/nos were equal but in random order,
         - First two trials , one yes and one no, were ignored for experimental setup
