@@ -1,3 +1,4 @@
+[EEG Tinder Proposal.pdf](https://github.com/abril-AL/Crux/files/10717480/EEG.Tinder.Proposal.pdf)
 # Crux-Literature-Review
 Repository for Crux UCLA Team 12 '23 Literature Review
 
