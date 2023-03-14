@@ -157,7 +157,7 @@ Additionally: Images are shown again and participants and participants swipe aga
 -   Increments of more testing to reassess an individual's preferences 
 
 Data Flow
-![](https://lh4.googleusercontent.com/bci-td9sgujiUClCZHbdu0B7hDtM8S1_ZWfpjf4giKfY-XOXZbS0U39Vdxt0U0cfCsHd31E7NmPKZWPTTTM4_kNgVpn9pp2eRjlA6FfNrhrY12xMquw-u2MH1bhw6sH1Ts0zrzHmYiuc65q8Vym3_Wg)
+![Diagrama de flujo](https://user-images.githubusercontent.com/103137140/224882789-38af74fc-a3b0-48d9-a8ad-e5ee94b36303.jpg)
 
 ## References
 
