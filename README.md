@@ -130,7 +130,7 @@ If time allows, we will further track quantitative facial metrics (measurements)
 *The experiment itself* 
 -   An electrode headset will be connected to test subjects in 8 Spots: F3, F4, T3, T4, P3, P4 O3, and O4. 
 
-PICUTRE HERE
+![electrodes](https://user-images.githubusercontent.com/103137140/224883140-703ba57f-2809-443f-9fcb-f05df7931c5a.png)
 
 -   Individuals will begin using the app and looking through the images (5 second per image followed by a 5 second break)  
 -   While individuals are looking at images, voltages will be recorded every 4 ms
