@@ -17,7 +17,7 @@
      pyqtgraph (version 0.9.10 or greater) (optional: needded for GUI functionality only)
      scipy (version 0.17.1 or greater) (optional: needed for GUI functionality only) 
   To install packages, use requirements file shortcut and some manual installations: 
-     `pip install -r requirements.txt --use-pep517`
+     `pip install -r ./misc/requirements.txt --use-pep517`
      `pip install numpy`
      `python -m pip install scipy`
   Also need to separately install PyQt4 to use GUI features:
@@ -31,4 +31,6 @@
 import pylsl
 from pyOpenBCI import OpenBCIBoard
 # to stream data, use appropriate port (macro to represent this port) 
-lsl_port = 'openbci_eeg_id1'
+lsl_port = 'openbci_eeg1' # Time Series Data Type
+
+#to do: lsl stuff and other neurokit stuff
