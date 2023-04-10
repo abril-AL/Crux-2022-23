@@ -34,3 +34,16 @@ from pyOpenBCI import OpenBCIBoard
 lsl_port = 'openbci_eeg1' # Time Series Data Type
 
 #to do: lsl stuff and other neurokit stuff
+
+
+def main(argv):
+  
+  # if no arguments are provided, default to the GUI application
+  if not argv:
+    import lib.gui as gui
+    from PyQt4 import QtGui
+    app = QtGui.QApplication(sys.argv)
+    window = gui.GUI()
+    sys.exit(app.exec_())
+  else:
+    sys.exit(app.exec_())
