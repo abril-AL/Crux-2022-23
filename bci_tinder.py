@@ -46,4 +46,8 @@ def main(argv):
     window = gui.GUI()
     sys.exit(app.exec_())
   else:
-    sys.exit(app.exec_())
+    sys.exit(app.exec_()) 
+    
+  if __name__ == '__main__':
+  main(sys.argv[1:])
+  
