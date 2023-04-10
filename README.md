@@ -176,3 +176,6 @@ Verosky, S. C., Zoner, K. A., Marble, C. W., Sammon, M. M., & Babarinsa, C. O. (
 Yang, S., Zhao, Y., & Ma, Y. (2019). Analysis of the Reasons and Development of Short Video Application——Taking Tik Tok as an Example. 
 
 Yuan, G., He, W., & Liu, G. (2022). Is mate preference recognizable based on electroencephalogram signals? machine learning applied to initial romantic attraction. *Frontiers in Neuroscience*, 16. https://doi.org/10.3389/fnins.2022.830820**
+
+
+
