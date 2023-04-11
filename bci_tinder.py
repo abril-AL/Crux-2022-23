@@ -28,42 +28,19 @@
   https://github.com/abril-AL/Crux
 '''
 
-#import pylsl
-#from pyOpenBCI import OpenBCIBoard
-# to stream data, use appropriate port (macro to represent this port) 
-#lsl_port = 'openbci_eeg1' # Time Series Data Type
-
-#to do: lsl stuff and other neurokit stuff
-
 import sys
-import lib.streamerlsl as streamerlsl
+import numpy as np # pip install numpy
+import pandas as pd # pip install pandas
+import neurokit2 as nk # pip install neurokit2 ( from cmd administator )
+# pip install mne ( as cmd admin )
+# python -m pip install brainflow
+
 
 def main(argv):
-  
-  # if no arguments are provided, default to the GUI application
-  if not argv:
-    import lib.gui as gui
-    from PyQt4 import QtGui
-    app = QtGui.QApplication(sys.argv)
-    window = gui.GUI()
-    sys.exit(app.exec_())
- 
-  # if user specifies CLI using the "--stream" argument, check if a port is also specified
-  else:
-    if argv[0] == '--stream':
-      lsl = streamerlsl.StreamerLSL(GUI=False)
-    else:
-      try:
-        if argv[1] != '--stream':
-          print ("Command '%s' not recognized" % argv[1])
-          return
-      except IndexError:
-        print("Command '%s' not recognized" % argv[0])
-        return
-      port = argv[0]
-      lsl = streamerlsl.StreamerLSL(port=port,GUI=False)
-    lsl.create_lsl()
-    lsl.begin()
+  #TODO: change to signal collected via lsl
+  signal = []
+  signal = 
+
     
 
 if __name__ == '__main__':
