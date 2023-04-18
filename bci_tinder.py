@@ -48,6 +48,18 @@ def main(argv):
       # create a new inlet to read from the stream
       inlet = StreamInlet(streams[0])
 
+   '''
+   TODO:
+
+   stream from name not type
+   save timeseries, fft, and bandpass data
+
+   ask abt what our 'threshold' is 
+
+   we dont (?) need nurokit anymore, better perf lul
+
+   maybe a new way to store the data (txt file is heavy)
+   '''
       
 
       while True:
