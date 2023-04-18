@@ -16,28 +16,56 @@
 '''
 
 import sys
+from datetime import datetime
 import numpy as np # pip install numpy
 import pandas as pd # pip install pandas
-import neurokit2 as nk # pip install neurokit2 ( from cmd administator )
+#import neurokit2 as nk # pip install neurokit2 ( from cmd administator )
 # pip install mne ( as cmd admin )
 # python -m pip install brainflow
 
 
-"""Read a multi-channel time series from LSL."""
-from pylsl import StreamInlet, resolve_stream
+def main(argv):
+   if not argv:
+      print( 'Please provide a valid trial ID argument')
+      sys.exit()
+   else:
+      print("Trial ID: "+ str(argv[0]))
+      #after stream is resolved we now have timestamped samples
+      # store in output file with unique name based on time and trial ID
+      now = datetime.now()
+      store = str(argv[0])+now.strftime("-%H-%M-%S")
+      timestampStore = "TS"+store
+      ts = open(timestampStore, "x")
+      f = open(store, "x")
 
-# first resolve an EEG stream on the lab network
-print("looking for an EEG stream...")
-streams = resolve_stream('type', 'EEG')
+      """Read a multi-channel time series from LSL."""
+      from pylsl import StreamInlet, resolve_stream
 
-# create a new inlet to read from the stream
-inlet = StreamInlet(streams[0])
+      # first resolve an EEG stream on the lab network
+      print("looking for an EEG stream...")
+      streams = resolve_stream('type', 'EEG')
 
-while True:
-    # get a new sample 
-    sample, timestamp = inlet.pull_sample()
-    print(timestamp, sample)
+      # create a new inlet to read from the stream
+      inlet = StreamInlet(streams[0])
 
+      
+
+      while True:
+         sample, timestamp = inlet.pull_sample()
+         print(timestamp, sample)
+         
+         f.write(str(sample))
+         f.write('\n')
+         '''
+         ts.write(str(timestamp))
+         ts.write('\n')
+         '''
+         #np.savetxt(store,timestamp) dont need(?)
+         
+
+
+if __name__ == '__main__':
+  main(sys.argv[1:])
 
 
 
