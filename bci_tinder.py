@@ -40,10 +40,16 @@ def main(argv):
       store_fft = "fft" + str(argv[0])
       store_bandpass = "bandpass" + str(argv[0])
       store_time_series = "timeseries" + str(argv[0])
-      #open every file we will be saving data to
-      fft = open(store_fft, "x")
-      bp = open(store_bandpass, "x")
-      ts = open(store_time_series, "x")
+      
+      # create the directory with the specified name, if it doesn't exist
+      directory_name = str(sys.argv[0])
+      if not os.path.exists(directory_name):
+          os.mkdir(directory_name)
+      
+      # open the files in the directory
+      fft = open(os.path.join(directory_name, store_fft), "x")
+      bp = open(os.path.join(directory_name, store_bandpass), "x")
+      ts = open(os.path.join(directory_name, store_time_series), "x")
 
       """Read a multi-channel time series from LSL."""
       from pylsl import StreamInlet, resolve_stream, resolve_byprop
