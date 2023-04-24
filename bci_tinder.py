@@ -16,6 +16,7 @@
 '''
 
 import sys
+import os
 from datetime import datetime
 import numpy as np # pip install numpy
 import pandas as pd # pip install pandas
@@ -29,73 +30,49 @@ def main(argv):
       print( 'Please provide a valid trial ID argument')
       sys.exit()
    else:
-      print("Trial ID: "+ str(argv[0]))
-      #after stream is resolved we now have timestamped samples
-      # store in output file with unique name based on time and trial ID
       now = datetime.now()
-      store = str(argv[0])+now.strftime("-%H-%M-%S")
-      timestampStore = "TS"+store
-      ts = open(timestampStore, "x")
-      f = open(store, "x")
+      todayDate = now.strftime("-%H-%M-%S")
+      print("Trial ID: " + str(argv[0]) + "\n Time: " + str(todayDate))
+      #after stream is resolved we now have timestamped samples
+      # store in output file with unique name based on trial ID
+      #will save fft , bandpass , and time series data
+      
+      store_fft = "fft" + str(argv[0])
+      store_bandpass = "bandpass" + str(argv[0])
+      store_time_series = "timeseries" + str(argv[0])
+      #open every file we will be saving data to
+      fft = open(store_fft, "x")
+      bp = open(store_bandpass, "x")
+      ts = open(store_time_series, "x")
 
       """Read a multi-channel time series from LSL."""
-      from pylsl import StreamInlet, resolve_stream
+      from pylsl import StreamInlet, resolve_stream, resolve_byprop
 
-      # first resolve an EEG stream on the lab network
+      # first resolve an EEG stream by prop for each type
       print("looking for an EEG stream...")
-      streams = resolve_stream('type', 'EEG')
+      streams_FFT = resolve_byprop("name", "fft")
+      streams_BP = resolve_byprop("name", "bandpass")
+      streams_TS = resolve_byprop("name", "timeseries")
 
-      # create a new inlet to read from the stream
-      inlet = StreamInlet(streams[0])
-
-   '''
-   TODO:
-
-   stream from name not type
-   save timeseries, fft, and bandpass data
-
-   ask abt what our 'threshold' is 
-
-   we dont (?) need nurokit anymore, better perf lul
-
-   maybe a new way to store the data (txt file is heavy)
-   '''
+      # create a new inlet to read from the named streams
+      inlet_FFT = StreamInlet(streams_FFT[0])
+      inlet_BP = StreamInlet(streams_BP[0])
+      inlet_TS = StreamInlet(streams_TS[0])
       
-
       while True:
-         sample, timestamp = inlet.pull_sample()
-         print(timestamp, sample)
-         
-         f.write(str(sample))
-         f.write('\n')
-         '''
-         ts.write(str(timestamp))
+         sample_fft, timestamp_fft = inlet_FFT.pull_sample()
+         sample_bp, timestamp_bp = inlet_BP.pull_sample()
+         sample_ts, timestamp_ts = inlet_TS.pull_sample()
+         print(timestamp_fft, sample_fft)
+         print(timestamp_bp, sample_bp)
+         print(timestamp_ts, sample_ts)
+         fft.write(str(sample_fft))
+         fft.write('\n')
+         bp.write(str(sample_bp))
+         bp.write('\n')
+         ts.write(str(sample_ts))
          ts.write('\n')
-         '''
-         #np.savetxt(store,timestamp) dont need(?)
-         
-
 
 if __name__ == '__main__':
   main(sys.argv[1:])
-
-
-
-'''
-   Deprecated 
-
-
-  Package Requirements:
-     pylsl (version 1.10.5 or greater) 
-     pyserial (version 3.1.1 or greater) 
-     numpy (version 1.11.1 or greater) 
-     pyqtgraph (version 0.9.10 or greater) (optional: needded for GUI functionality only)
-     scipy (version 0.17.1 or greater) (optional: needed for GUI functionality only) 
-  To install packages, use requirements file shortcut and some manual installations: 
-     `pip install -r ./misc/requirements.txt --use-pep517`
-     `pip install numpy`
-     `python -m pip install scipy`
-  Also need to separately install PyQt4 to use GUI features:
-     `pip install sip`
-
-'''
+   ##only argument is that of the name of the trial 
