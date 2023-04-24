@@ -47,9 +47,9 @@ def main(argv):
       os.mkdir(directory_name) #if not os.path.exists(directory_name):
           
       # open the files in the directory
-      fft = open(os.path.join(directory_name, store_fft), "x")
-      bp = open(os.path.join(directory_name, store_bandpass), "x")
-      ts = open(os.path.join(directory_name, store_time_series), "x")
+      fft = open(store_fft ,"x")
+      bp = open(store_bandpass, "x")
+      ts = open( store_time_series, "x")
 
       """Read a multi-channel time series from LSL."""
       from pylsl import StreamInlet, resolve_stream, resolve_byprop
@@ -59,7 +59,7 @@ def main(argv):
       streams_FFT = resolve_byprop("name", "fft")
       streams_BP = resolve_byprop("name", "bandpass")
       streams_TS = resolve_byprop("name", "timeseries")
-
+      print("all streams connected")
       # create a new inlet to read from the named streams
       inlet_FFT = StreamInlet(streams_FFT[0])
       inlet_BP = StreamInlet(streams_BP[0])
