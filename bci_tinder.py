@@ -10,7 +10,7 @@
   This include the implementation of the LSL stream we will use
   for real time data streaming from the board to the program
 
-  To run: `python bci_tinder.py`. 
+  To run: `python bci_tinder.py <trial_name>`. 
   For more information, see Github:
   https://github.com/abril-AL/Crux
 '''
@@ -40,12 +40,12 @@ def main(argv):
       store_fft = "fft" + str(argv[0])
       store_bandpass = "bandpass" + str(argv[0])
       store_time_series = "timeseries" + str(argv[0])
-      
+
       # create the directory with the specified name, if it doesn't exist
-      directory_name = str(sys.argv[0])
-      if not os.path.exists(directory_name):
-          os.mkdir(directory_name)
-      
+      directory_name = str(argv[0])
+      print(directory_name)
+      os.mkdir(directory_name) #if not os.path.exists(directory_name):
+          
       # open the files in the directory
       fft = open(os.path.join(directory_name, store_fft), "x")
       bp = open(os.path.join(directory_name, store_bandpass), "x")
@@ -69,16 +69,17 @@ def main(argv):
          sample_fft, timestamp_fft = inlet_FFT.pull_sample()
          sample_bp, timestamp_bp = inlet_BP.pull_sample()
          sample_ts, timestamp_ts = inlet_TS.pull_sample()
-         print(timestamp_fft, sample_fft)
-         print(timestamp_bp, sample_bp)
-         print(timestamp_ts, sample_ts)
+         #print(timestamp_fft, sample_fft)
+         #print(timestamp_bp, sample_bp)
+         #print(timestamp_ts, sample_ts)
          fft.write(str(sample_fft))
          fft.write('\n')
+         #note that bp will have some arrays of 0 ( time reason i think )
          bp.write(str(sample_bp))
          bp.write('\n')
          ts.write(str(sample_ts))
          ts.write('\n')
 
 if __name__ == '__main__':
-  main(sys.argv[1:])
-   ##only argument is that of the name of the trial 
+   main(sys.argv[1:])
+   # only argument is that of the name of the trial 
