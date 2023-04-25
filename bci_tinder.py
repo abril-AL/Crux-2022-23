@@ -7,7 +7,9 @@
   Author - Abril Aguilar Lopez
   ---------------
   This is the main program for the BCI tinder app
-  This include the implementation of the LSL stream we will use
+  This include the implementation of opening and reading from the LSL stream 
+  for real time data streaming from the board to the program,
+  and writing the samples to a local file
   for real time data streaming from the board to the program
 
   To run: `python bci_tinder.py <trial_name>`. 
