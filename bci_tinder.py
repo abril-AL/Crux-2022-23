@@ -65,6 +65,12 @@ def main(argv):
       inlet_BP = StreamInlet(streams_BP[0])
       inlet_TS = StreamInlet(streams_TS[0])
       
+      '''TODO
+      while True has issues with pulling from inlet
+      need to read from full lsl , not just while the program runs or LSL is streaming
+      samples no. not aligned
+      need to pull samples after end of trial
+      '''
       while True:
          sample_fft, timestamp_fft = inlet_FFT.pull_sample()
          sample_bp, timestamp_bp = inlet_BP.pull_sample()
